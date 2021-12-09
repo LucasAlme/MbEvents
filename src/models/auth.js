@@ -1,6 +1,7 @@
 export class Auth{
     constructor(){
-        this.username = '';
-        this.senha = '';
+        this.name = '';
+        this.password = '';
+        this.email = '';
     }
 }

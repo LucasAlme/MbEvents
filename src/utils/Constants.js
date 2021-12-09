@@ -13,5 +13,4 @@ const dispatchState = {
     name: 'UPDATE-NAME'
 }
 
-
 export { colors, dispatchState }

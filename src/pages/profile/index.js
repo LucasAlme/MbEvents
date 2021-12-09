@@ -8,6 +8,8 @@ import ImagePicker from 'react-native-image-picker';
 import { colors } from '../../utils/Constants'
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import Button from "../../components/button";
+import api from "../../service/api";
+import { IsEmail } from "../../utils/isEmail";
 
 const error = require('../../assets/images/error.png')
 
@@ -16,16 +18,16 @@ export default function Profile() {
   const name = useSelector(state => state.name);
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
-  const [user, setUser] = useState(
-    {
-      email: '',
-      username: '',
-      foto: '',
-    }
-  );
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    setUser({ ...user, username: name });
+    if (user?.foto)
+      uploadImage();
+  }, [user?.foto]);
+
+
+  useEffect(() => {
+    // setUser({ ...user, name: name });
     const concedido = PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
       {
@@ -37,17 +39,39 @@ export default function Profile() {
     }
   }, [])
 
+
+  useEffect(() => {
+    console.log(user)
+    getData();
+  }, [])
+
+  function getData() {
+    api.get(`users?name=${name}`)
+      .then((resp) =>
+        setUser(resp.data[0])
+      )
+      .catch((err) => {
+        console.error("ops! ocorreu um erro " + err)
+        setIsRefresh(false)
+      })
+
+  }
+
   function logoff() {
     dispatch({ type: dispatchState.isLogin, value: false });
     dispatch({ type: dispatchState.name, value: '' });
   }
 
-
   function alterar() {
-    if (user.username.length === 0) return null;
+    if (user?.name?.length === 0) return null;
     setIsEditable(!isEditable);
     if (isEditable) {
-      dispatch({ type: dispatchState.name, value: user.username });
+      if (!IsEmail(user.email)) {
+        Alert.alert('Email Inválido', 'Insira um email válido');
+        return null
+      }
+      dispatch({ type: dispatchState.name, value: user?.name });
+      api.put(`users/${user.id}`, user);
       Alert.alert('Sucesso!', 'Seus dados foram alterados com sucesso!')
     }
   }
@@ -63,9 +87,14 @@ export default function Profile() {
     };
     ImagePicker.showImagePicker(options, response => {
       if (!response.error && !response.didCancel)
-        setUser({ ...user, foto: response });
+        setUser({ ...user, foto: response.uri });
     });
   }
+
+  function uploadImage() {
+    api.put(`users/${user.id}`, user);
+  }
+
   return (
     <View style={styles.background}>
       {name ?
@@ -73,16 +102,18 @@ export default function Profile() {
           <View style={styles.containerProfile}>
             <Text style={styles.txtProfileTitle}>Perfil</Text>
             <TouchableOpacity style={styles.avatarBorder} onPress={() => selectImage()}>
-              <Avatar rounded source={user.foto ? {uri: user.foto.uri} : null} title={name.substr(0, 1)} titleStyle={{ color: colors.branco }} containerStyle={{ backgroundColor: colors.cinza }} size={heightPercentageToDP('15%')} />
+              <Avatar rounded source={user?.foto ? { uri: user?.foto } : null} title={name.substr(0, 1)} titleStyle={{ color: colors.branco }} containerStyle={{ backgroundColor: colors.cinza }} size={heightPercentageToDP('15%')} />
             </TouchableOpacity>
-            <TextInput style={isEditable ? styles.txtNameEditable : styles.txtName} value={user.username} onChangeText={(txt) => setUser({ ...user, username: txt })} editable={isEditable} />
+            <TextInput style={isEditable ? styles.txtNameEditable : styles.txtName} value={user?.name} onChangeText={(txt) => setUser({ ...user, name: txt })} editable={isEditable} />
           </View>
           <View style={styles.content}>
             <View>
               <Text style={[styles.txt, { paddingLeft: 4, fontWeight: 'bold' }]}>E-mail</Text>
               <TextInput placeholder={'...@gmail.com'} editable={isEditable} placeholderTextColor={isEditable ? colors.cinzaEscuro : colors.cinza}
-                onChangeText={(txt) => setUser({ ...user, email: txt })} value={user.email}
+                onChangeText={(txt) => setUser({ ...user, email: txt })} value={user?.email}
                 style={!isEditable ? styles.txtInput : styles.txtInputEditable} />
+              <Text style={[styles.txt, { paddingLeft: 4, fontWeight: 'bold' }]}>Telefone</Text>
+              <Text style={[styles.txtInput, { paddingLeft: 4, paddingTop: 5 }]}>{user?.phone}</Text>
             </View>
             <View>
               <Button value="Alterar Dados" onPress={alterar} />

@@ -5,6 +5,7 @@ import Button from "../../components/button";
 import DismissKeyboard from '../../components/dismissKeyboard';
 import Input from "../../components/input";
 import { Auth } from "../../models/auth";
+import api from "../../service/api";
 import { dispatchState } from "../../utils/Constants";
 import styles from "./style";
 
@@ -13,14 +14,29 @@ export default function Login() {
 
   const [auth, setAuth] = useState(new Auth());
   const dispatch = useDispatch();
+  const [userSearched, setUserSearched] = useState([]);
+
+  function getData() {
+    api.get(`users?email=${auth.email}&password=${auth.password}`)
+      .then((resp) =>
+        setUserSearched(resp.data),
+      ).then((resp) =>
+        userSearched.length == 0 ? null : dispatch({ type: dispatchState.name, value: userSearched[0].name }),
+        userSearched.length == 0 ? null : dispatch({ type: dispatchState.isLogin, value: true }),
+      )
+      .catch((err) => {
+        console.error("ops! ocorreu um erro " + err)
+
+      })
+  }
 
   function login() {
-    if (auth.username.length < 3 || auth.senha.length < 3) {
+    if (auth.email.length < 3 || auth.password.length < 3) {
       Alert.alert('Usuario Incorreto', 'O nome de usuário e senha devem ter mais que 3 carácteres');
       return null
     } else {
-      dispatch({ type: dispatchState.isLogin, value: true });
-      dispatch({ type: dispatchState.name, value: auth.username });
+      getData();
+
     }
   }
 
@@ -33,14 +49,14 @@ export default function Login() {
       <KeyboardAvoidingView keyboardVerticalOffset={-150} behavior={'height'} contentContainerStyle={{ flex: 1 }} style={{ flex: 1 }}>
         <View style={styles.background}>
           <View style={styles.containerInput}>
-          <Text style={styles.txtBold}>Login</Text>
+            <Text style={styles.txtBold}>Login</Text>
             <View style={styles.containerLogin}>
-              <Text style={styles.txt}>Seu Nome</Text>
-              <Input 
-                placeholder='Nome de usuário' onChangeText={(txt) => setAuth({ ...auth, username: txt })} />
+              <Text style={styles.txt}>Seu Email</Text>
+              <Input
+                placeholder='Digite seu email' onChangeText={(txt) => setAuth({ ...auth, email: txt })} />
               <Text style={styles.txt}>Sua senha</Text>
               <Input
-                placeholder='******************' password onChangeText={(txt) => setAuth({ ...auth, senha: txt })} />
+                placeholder='******************' password onChangeText={(txt) => setAuth({ ...auth, password: txt })} />
             </View>
             <Button value="ENTRAR" customStyle={{ marginTop: 30 }} onPress={login} />
             <TouchableOpacity style={{ alignSelf: 'flex-end' }} onPress={loginWithoutLogin}>

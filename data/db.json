@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "name": "Palestra sobre Segurança da Informação",
+      "description": "A palestra sobre segurança da informação abrange as questões mais comuns de qualquer pessoa que use a internet no dia-a-dia - no trabalho, em casa ou no lazer - através de um computador ou dispositivo móvel.",
+      "price": 20.5,
+      "date": "09/12/2021",
+      "hour": " 20:30"
+    },
+    {
+      "id": "2",
+      "name": "Ferramenta de expansão da excelência humana",
+      "description": "Descubra as novas ferramentas para despertar o que existe de melhor em você.",
+      "price": 0,
+      "date": "20/12/2021",
+      "hour": " 15:00"
+    },
+    {
+      "id": "3",
+      "name": "40ºEDD - Econtro de Direito Digital",
+      "description": "O Digital Rights Association convida a todos para o nosso próximo Encontro de Direito Digital.",
+      "price": 0,
+      "date": "04/01/2022",
+      "hour": " 17:30"
+    }
+  ],
+  "myEvents": [],
+  "users": [
+    {
+      "id": 1,
+      "name": "Lucas Almeida Sousa",
+      "email": "lucas.sousa2001@gmail.com",
+      "password": "lucas102030",
+      "phone": "(11)947960515",
+      "photo": "",
+      "foto": "file:///storage/emulated/0/Android/data/com.mbevents/files/Pictures/image-b9052ff3-f870-4eda-aa7a-a5293bcc16ad.jpg"
+    }
+  ]
+}

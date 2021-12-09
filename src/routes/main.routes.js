@@ -12,11 +12,21 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { colors } from '../utils/Constants';
 import { Icon } from 'react-native-elements';
 import MyTickets from '../pages/myTickets';
+import DetailsTicket from '../pages/detailsTickets';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 function App() {
+
+    function HomeNavigator() {
+        return (
+            <Stack.Navigator headerMode="screen">
+                <Stack.Screen options={{ headerShown: false }} name={Telas.home} component={Home} />
+                <Stack.Screen options={{ headerTitle: 'Detalhes do Ingresso', headerTintColor: colors.cinzaEscuro, headerStyle: {backgroundColor: "rgba(5, 230, 250, 0.05)"}}} name={Telas.detailsTicket} component={DetailsTicket} />
+            </Stack.Navigator>
+        )
+    }
 
     function MainNavigator() {
         const bottomTabBar = {
@@ -24,7 +34,7 @@ function App() {
         }
         return (
             <BottomTab.Navigator tabBarOptions={bottomTabBar}>
-                <BottomTab.Screen name={Telas.home} component={Home}
+                <BottomTab.Screen name={Telas.home} component={HomeNavigator}
                     options={{ headerShown: false, tabBarLabel: "Inicio", tabBarIcon: (({ color }) => (<Icon name="home" color={color} size={27} type='feather'></Icon>)) }}
                 />
                 <BottomTab.Screen name={Telas.myTickets} component={MyTickets}
