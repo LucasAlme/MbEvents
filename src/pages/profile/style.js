@@ -22,6 +22,15 @@ export default styles = StyleSheet.create({
     color: colors.azul,
     paddingVertical: 20
   },
+  txtNameEditable: {
+    fontSize: 20,
+    color: colors.azul,
+    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderColor: colors.azul,
+    width: '40%',
+    textAlign: 'center'
+  },
   imgSty: {
     height: 250,
     width: 250,
@@ -54,9 +63,22 @@ export default styles = StyleSheet.create({
   },
   txtInput: {
     fontSize: 16,
+
+    borderColor: colors.cinza,
+    color: colors.cinzaEscuro,
+    width: '70%'
+  },
+
+  txtInputEditable: {
+    fontSize: 16,
     borderBottomWidth: 1,
     borderColor: colors.cinza,
     color: colors.cinzaEscuro,
     width: '70%'
+  },
+  avatarBorder: {
+    borderWidth: 1,
+    borderColor: colors.azul,
+    borderRadius: 65
   }
 })
