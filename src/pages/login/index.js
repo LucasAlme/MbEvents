@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from "../../components/button";
 import DismissKeyboard from '../../components/dismissKeyboard';
 import Input from "../../components/input";
@@ -14,20 +14,12 @@ export default function Login() {
 
   const [auth, setAuth] = useState(new Auth());
   const dispatch = useDispatch();
-  const [userSearched, setUserSearched] = useState([]);
 
-  function getData() {
-    api.get(`users?email=${auth.email}&password=${auth.password}`)
-      .then((resp) =>
-        setUserSearched(resp.data),
-      ).then((resp) =>
-        userSearched.length == 0 ? null : dispatch({ type: dispatchState.name, value: userSearched[0].name }),
-        userSearched.length == 0 ? null : dispatch({ type: dispatchState.isLogin, value: true }),
-      )
-      .catch((err) => {
-        console.error("ops! ocorreu um erro " + err)
+  async function getData() {
+    const resp = await api.get(`users?email=${auth.email}&password=${auth.password}`)
+    dispatch({ type: dispatchState.name, value: resp.data[0]?.name })
+    dispatch({ type: dispatchState.isLogin, value: true })
 
-      })
   }
 
   function login() {
@@ -36,7 +28,6 @@ export default function Login() {
       return null
     } else {
       getData();
-
     }
   }
 

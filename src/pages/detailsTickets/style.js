@@ -8,12 +8,14 @@ export default styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 20,
-    paddingVertical: 20
+    paddingVertical: 20,
+    justifyContent: 'space-between',
+    height: '100%'
   },
-  txtTitle:{
+  txtTitle: {
     fontSize: 22
   },
-  content:{
+  content: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 20

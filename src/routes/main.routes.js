@@ -13,6 +13,7 @@ import { colors } from '../utils/Constants';
 import { Icon } from 'react-native-elements';
 import MyTickets from '../pages/myTickets';
 import DetailsTicket from '../pages/detailsTickets';
+import BuyTicket from '../pages/buyTicket';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -23,7 +24,8 @@ function App() {
         return (
             <Stack.Navigator headerMode="screen">
                 <Stack.Screen options={{ headerShown: false }} name={Telas.home} component={Home} />
-                <Stack.Screen options={{ headerTitle: 'Detalhes do Ingresso', headerTintColor: colors.cinzaEscuro, headerStyle: {backgroundColor: "rgba(5, 230, 250, 0.05)"}}} name={Telas.detailsTicket} component={DetailsTicket} />
+                <Stack.Screen options={{ headerTitle: 'Detalhes do Ingresso', headerTintColor: colors.cinzaEscuro, headerStyle: { backgroundColor: "rgba(5, 230, 250, 0.05)" } }} name={Telas.detailsTicket} component={DetailsTicket} />
+                <Stack.Screen options={{ headerTitle: 'Comprar Ingresso', headerTintColor: colors.cinzaEscuro, headerStyle: { backgroundColor: "rgba(5, 230, 250, 0.05)" } }} name={Telas.buyTickets} component={BuyTicket} />
             </Stack.Navigator>
         )
     }

@@ -20,21 +20,14 @@ export default function Home() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    console.log(name)
     getData();
   }, [search])
 
-  function getData() {
+  async function getData() {
     setIsRefresh(true);
-    api.get(`events?q=${search}`)
-      .then((resp) =>
-        setEvents(resp.data),
-        setIsRefresh(false)
-      )
-      .catch((err) => {
-        console.error("ops! ocorreu um erro " + err)
-        setIsRefresh(false)
-      })
+    const resp = await api.get(`events?q=${search}`)
+    setEvents(resp.data),
+      setIsRefresh(false);
 
   }
 
@@ -57,10 +50,10 @@ export default function Home() {
           style={{ width: '100%' }}
           showsVerticalScrollIndicator={true}
           ListFooterComponent={<FooterList load={isRefresh} />}
-          keyExtractor={item => item.id}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item: item }) => (
             <CardEvent item={item}
-              onPress={() => navigation.navigate(Telas.detailsTicket, {event: item})}
+              onPress={() => navigation.navigate(Telas.detailsTicket, { event: item })}
             />
           )}
         />

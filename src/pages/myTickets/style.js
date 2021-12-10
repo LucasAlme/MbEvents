@@ -27,5 +27,15 @@ export default styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 30,
     paddingTop: 20
+  },
+  row: { 
+    flexDirection: 'row' ,
+    justifyContent: 'space-between'
+  },
+  txt:{
+    fontSize: 16,
+    color: colors.azul,
+    marginLeft: 2,
+    paddingVertical: 20
   }
 })

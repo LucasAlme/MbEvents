@@ -1,40 +1,169 @@
 {
   "events": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Palestra sobre Segurança da Informação",
       "description": "A palestra sobre segurança da informação abrange as questões mais comuns de qualquer pessoa que use a internet no dia-a-dia - no trabalho, em casa ou no lazer - através de um computador ou dispositivo móvel.",
       "price": 20.5,
       "date": "09/12/2021",
-      "hour": " 20:30"
+      "hour": "20:30",
+      "local": "AV Paulista"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Ferramenta de expansão da excelência humana",
       "description": "Descubra as novas ferramentas para despertar o que existe de melhor em você.",
       "price": 0,
       "date": "20/12/2021",
-      "hour": " 15:00"
+      "hour": "15:00",
+      "local": "AV Paulista"
     },
     {
-      "id": "3",
+      "id": 4,
+      "name": "17ª Feira EBS - Feira da Indústria dos Eventos Corporativos, Incentivos, Congressos, Feiras e Treinamentos & Desenvolvimento 2022",
+      "description": "17ª Feira EBS - Feira da Indústria dos Eventos Corporativos, Incentivos, Congressos, Feiras e Treinamentos & Desenvolvimento será realizado em Reboucas Convention Center São Paulo de 1 a 2 junho 2022 apresentando as novidades de empresas de Brasil e internacionais relacionadas aos setores de Organização de Eventos, Eventos de Incentivo, Eventos, mice.",
+      "price": 0,
+      "date": "31/05/2022",
+      "hour": "15:00",
+      "local": "Av. Rebouças, 600 - Pinheiros, São Paulo - SP"
+    },
+    {
+      "id": 5,
+      "name": "Redução de custos empresariais ( como reduzir custos com empregados, tributos, energia e ter mais ganhos diante dos concorrentes) - Online",
+      "description": "Em tempos de crise, o empresário se depara sempre com a mesma pergunta. Como fazer para reduzir os custos da minha empresa? Neste curso iremos demonstrar de forma clara e didática os procedimentos legais para redução dos custos empresariais, como por exemplo custo de empregado, erros encontrados na folha de pagamento, retenção previdenciária, lei do bem, redução de conta de energia elétrica e faremos a demonstração de como obter recuperação de valores pagos pela empresa, caso haja erros que ocasionaram pagamentos a maior de tributos.",
+      "price": 0,
+      "date": "17/02/2022",
+      "hour": "15:00",
+      "local": "AV Paulista"
+    },
+    {
+      "id": 7,
+      "name": "Curso Controle Interno e Gestão de Processos - São Paulo, SP - 16 e 17/mar",
+      "description": "",
+      "price": 0,
+      "date": "16/03/2022",
+      "hour": "21:00",
+      "local": "Av. Paulista, 967 - Bela Vista, São Paulo - SP"
+    },
+    {
+      "id": 6,
+      "name": "Global Agribusiness Forum",
+      "description": "Global Agribusiness Forum focuses on climate change and sustainability, an international meeting that gathers the greatest exponents of world agriculture to discuss agribusiness and seek solutions to challenges faced by humanity to develop social and economically and preserve the environment.",
+      "price": 0,
+      "date": "01/07/2022",
+      "hour": "15:00",
+      "local": "Sheraton Sao Paulo WTC Hotel, São Paulo, Brazil"
+    },
+    {
+      "id": 8,
+      "name": "Escolar Office Brasil 2022",
+      "description": "Overview interest facts - Escolar Office Brasil 2022 Escolar Office Brazil is the industry's premier trade show. Annually brings together major brands to present the launches that will supply different types of retail establishments, educational institutions, corporate market and international buyers.Overview of exhibitors / visitors - Escolar Office Brasil 2022 Main window of product launches and trends, has a mix of widely diverse products as general articles, stationery and bazaar, school products, gifts, toys, briefcases, backpacks and accessories, line office, bazaar, computer science and technology.",
+      "price": 0,
+      "date": "31/07/2022",
+      "hour": "20:00",
+      "local": "Rua José Bernardo Pinto, 333 - Vila Guilherme, São Paulo - SP"
+    },
+    {
+      "id": 9,
+      "name": "Formatura - Educação Infantil Colégio Fereguetti",
+      "description": "",
+      "price": 0,
+      "date": "11/12/2021",
+      "hour": "20:00",
+      "local": "R. Dr. Almeida Lima, 1176 - Mooca, São Paulo - SP"
+    },
+    {
+      "id": 10,
+      "name": "22º SEMINÁRIO DE EDUCADORES CRISTÃOS",
+      "description": "",
+      "price": 0,
+      "date": "21/01/2022",
+      "hour": "08:30",
+      "local": "R. Dr. Emile Pilon, 231 - Vila Arens II, Jundiaí - SP"
+    },
+    {
+      "id": 11,
+      "name": "Leilão da Prefeitura Municipal de Bertioga",
+      "description": "",
+      "price": 0,
+      "date": "13/12/2021",
+      "hour": "05:42",
+      "local": "03873-000 - R. Japaraiquara - Vila Rio Branco, São Paulo - SP"
+    },
+    {
+      "id": 12,
+      "name": "Prefeitura de Paraibuna",
+      "description": "",
+      "price": 0,
+      "date": "13/12/2021",
+      "hour": "06:52",
+      "local": "03873-000 - R. Japaraiquara - Vila Rio Branco, São Paulo - SP"
+    },
+    {
+      "id": 3,
       "name": "40ºEDD - Econtro de Direito Digital",
       "description": "O Digital Rights Association convida a todos para o nosso próximo Encontro de Direito Digital.",
       "price": 0,
       "date": "04/01/2022",
-      "hour": " 17:30"
+      "hour": "17:30",
+      "local": "AV Paulista"
     }
   ],
-  "myEvents": [],
   "users": [
     {
       "id": 1,
       "name": "Lucas Almeida Sousa",
-      "email": "lucas.sousa2001@gmail.com",
-      "password": "lucas102030",
+      "email": "lucas.almeida@gmail.com",
+      "foto": "file:///storage/emulated/0/Android/data/com.mbevents/files/Pictures/image-81bfb0aa-dcd5-46b3-a402-8263c66f61eb.jpg",
+      "password": "9394",
       "phone": "(11)947960515",
-      "photo": "",
-      "foto": "file:///storage/emulated/0/Android/data/com.mbevents/files/Pictures/image-b9052ff3-f870-4eda-aa7a-a5293bcc16ad.jpg"
+      "myTickets": []
+    },
+    {
+      "id": 2,
+      "name": "Jorge Gomes",
+      "email": "jorge.gomes@gmail.com",
+      "foto": "",
+      "password": "9394",
+      "phone": "(11)947960515",
+      "myTickets": []
+    },
+    {
+      "id": 3,
+      "name": "João",
+      "email": "Joao@gmail.com",
+      "foto": "",
+      "password": "9394",
+      "phone": "(11)947960515",
+      "myTickets": [
+        {
+          "id": 3,
+          "name": "40ºEDD - Econtro de Direito Digital",
+          "description": "O Digital Rights Association convida a todos para o nosso próximo Encontro de Direito Digital.",
+          "price": 0,
+          "date": "04/01/2022",
+          "hour": " 17:30",
+          "local": "AV Paulista"
+        },
+        {
+          "id": 1,
+          "name": "Palestra sobre Segurança da Informação",
+          "description": "A palestra sobre segurança da informação abrange as questões mais comuns de qualquer pessoa que use a internet no dia-a-dia - no trabalho, em casa ou no lazer - através de um computador ou dispositivo móvel.",
+          "price": 20.5,
+          "date": "09/12/2021",
+          "hour": " 20:30",
+          "local": "AV Paulista"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Rafaela",
+      "email": "rafaela@gmail.com",
+      "foto": "",
+      "password": "9394",
+      "phone": "(11)947960515",
+      "myTickets": []
     }
   ]
 }

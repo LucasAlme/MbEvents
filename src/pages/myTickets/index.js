@@ -7,6 +7,7 @@ import api from "../../service/api";
 import { dispatchState } from "../../utils/Constants";
 import styles from "./style";
 import { colors } from '../../utils/Constants';
+import { useFocusEffect } from "@react-navigation/native";
 
 const sadUser = require('../../assets/images/saduser.png')
 export default function MyTickets() {
@@ -15,21 +16,25 @@ export default function MyTickets() {
   const [events, setEvents] = useState([]);
   const [isRefresh, setIsRefresh] = useState(false);
 
-  useEffect(() => {
-    getData();
-  }, [])
+  
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getData();
+    }, []));
 
   function getData() {
     setIsRefresh(true);
-    api.get("myEvents/")
+    api.get(`users?name=${name}`)
       .then((resp) =>
-        setEvents(resp.data),
+        setEvents(resp?.data[0]?.myTickets),
         setIsRefresh(false)
       )
       .catch((err) => {
         console.error("ops! ocorreu um erro " + err)
         setIsRefresh(false)
       })
+    console.log(events)
 
   }
   function logoff() {
@@ -40,7 +45,7 @@ export default function MyTickets() {
   return (
     <View style={styles.background}>
       {name ?
-        events.length === 0 ?
+        events?.length === 0 ?
           <View style={styles.containerDeslogado}>
             <Text style={[styles.txtTitle, { textAlign: 'center' }]}>Você ainda não possui nenhum ingresso!</Text>
             <Image source={sadUser} style={styles.imgSty} />
@@ -48,11 +53,16 @@ export default function MyTickets() {
           :
           <View style={styles.container}>
             <>
+            <View style={styles.row}>
               <Text style={styles.txtTitle}>Meus Ingressos</Text>
+              <Text style={styles.txtTitle}>Possuí {events.length} ingresso</Text>
+            </View>
+              
               <FlatList
                 data={events}
                 refreshControl={<RefreshControl refreshing={isRefresh} onRefresh={() => getData()} colors={[colors.azul, colors.branco]} />}
                 style={{ width: '100%' }}
+                keyExtractor={item => String(item.id)}
                 ListFooterComponent={<FooterList load={isRefresh} />}
                 renderItem={({ item: item }) => (
                   <CardEvent item={item} isMyTicket />
