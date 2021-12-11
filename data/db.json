@@ -117,7 +117,17 @@
       "foto": "file:///storage/emulated/0/Android/data/com.mbevents/files/Pictures/image-81bfb0aa-dcd5-46b3-a402-8263c66f61eb.jpg",
       "password": "9394",
       "phone": "(11)947960515",
-      "myTickets": []
+      "myTickets": [
+        {
+          "id": 4,
+          "name": "17ª Feira EBS - Feira da Indústria dos Eventos Corporativos, Incentivos, Congressos, Feiras e Treinamentos & Desenvolvimento 2022",
+          "description": "17ª Feira EBS - Feira da Indústria dos Eventos Corporativos, Incentivos, Congressos, Feiras e Treinamentos & Desenvolvimento será realizado em Reboucas Convention Center São Paulo de 1 a 2 junho 2022 apresentando as novidades de empresas de Brasil e internacionais relacionadas aos setores de Organização de Eventos, Eventos de Incentivo, Eventos, mice.",
+          "price": 0,
+          "date": "31/05/2022",
+          "hour": "15:00",
+          "local": "Av. Rebouças, 600 - Pinheiros, São Paulo - SP"
+        }
+      ]
     },
     {
       "id": 2,
@@ -126,7 +136,26 @@
       "foto": "",
       "password": "9394",
       "phone": "(11)947960515",
-      "myTickets": []
+      "myTickets": [
+        {
+          "id": 2,
+          "name": "Ferramenta de expansão da excelência humana",
+          "description": "Descubra as novas ferramentas para despertar o que existe de melhor em você.",
+          "price": 0,
+          "date": "20/12/2021",
+          "hour": "15:00",
+          "local": "AV Paulista"
+        },
+        {
+          "id": 3,
+          "name": "40ºEDD - Econtro de Direito Digital",
+          "description": "O Digital Rights Association convida a todos para o nosso próximo Encontro de Direito Digital.",
+          "price": 0,
+          "date": "04/01/2022",
+          "hour": "17:30",
+          "local": "AV Paulista"
+        }
+      ]
     },
     {
       "id": 3,

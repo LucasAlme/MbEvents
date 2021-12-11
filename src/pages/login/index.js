@@ -17,8 +17,13 @@ export default function Login() {
 
   async function getData() {
     const resp = await api.get(`users?email=${auth.email}&password=${auth.password}`)
+    if (resp.data.length === 0) {
+      Alert.alert('Usuário não encontrado', 'Digite seu email e senha corretamente');
+      return null
+    }
     dispatch({ type: dispatchState.name, value: resp.data[0]?.name })
     dispatch({ type: dispatchState.isLogin, value: true })
+    console.log(resp.data)
 
   }
 
@@ -44,7 +49,7 @@ export default function Login() {
             <View style={styles.containerLogin}>
               <Text style={styles.txt}>Seu Email</Text>
               <Input
-                placeholder='Digite seu email' onChangeText={(txt) => setAuth({ ...auth, email: txt })} />
+                placeholder='Digite seu email' onChangeText={(txt) => setAuth({ ...auth, email: txt })}  />
               <Text style={styles.txt}>Sua senha</Text>
               <Input
                 placeholder='******************' password onChangeText={(txt) => setAuth({ ...auth, password: txt })} />

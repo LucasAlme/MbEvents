@@ -20,12 +20,18 @@ const BottomTab = createBottomTabNavigator();
 
 function App() {
 
+    function buyTicketFlowStyle(pageName) {
+        return (
+            { headerTitle: pageName, headerTintColor: colors.cinzaEscuro, headerStyle: { backgroundColor: "rgba(5, 230, 250, 0.05)" } }
+        )
+    }
+
     function HomeNavigator() {
         return (
             <Stack.Navigator headerMode="screen">
                 <Stack.Screen options={{ headerShown: false }} name={Telas.home} component={Home} />
-                <Stack.Screen options={{ headerTitle: 'Detalhes do Ingresso', headerTintColor: colors.cinzaEscuro, headerStyle: { backgroundColor: "rgba(5, 230, 250, 0.05)" } }} name={Telas.detailsTicket} component={DetailsTicket} />
-                <Stack.Screen options={{ headerTitle: 'Comprar Ingresso', headerTintColor: colors.cinzaEscuro, headerStyle: { backgroundColor: "rgba(5, 230, 250, 0.05)" } }} name={Telas.buyTickets} component={BuyTicket} />
+                <Stack.Screen options={buyTicketFlowStyle('Detalhes do Ingresso')} name={Telas.detailsTicket} component={DetailsTicket} />
+                <Stack.Screen options={buyTicketFlowStyle('Comprar Ingresso')} name={Telas.buyTickets} component={BuyTicket} />
             </Stack.Navigator>
         )
     }

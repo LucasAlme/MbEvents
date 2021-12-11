@@ -7,7 +7,8 @@ import api from "../../service/api";
 import { dispatchState } from "../../utils/Constants";
 import styles from "./style";
 import { colors } from '../../utils/Constants';
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { Telas } from "../../utils/enums/telas";
 
 const sadUser = require('../../assets/images/saduser.png')
 export default function MyTickets() {
@@ -15,28 +16,21 @@ export default function MyTickets() {
   const name = useSelector(state => state.name);
   const [events, setEvents] = useState([]);
   const [isRefresh, setIsRefresh] = useState(false);
+  const navigation = useNavigation();
 
-  
 
   useFocusEffect(
     React.useCallback(() => {
       getData();
     }, []));
 
-  function getData() {
+  async function getData() {
     setIsRefresh(true);
-    api.get(`users?name=${name}`)
-      .then((resp) =>
-        setEvents(resp?.data[0]?.myTickets),
-        setIsRefresh(false)
-      )
-      .catch((err) => {
-        console.error("ops! ocorreu um erro " + err)
-        setIsRefresh(false)
-      })
-    console.log(events)
-
+    const resp = await api.get(`users?name=${name}`);
+    setEvents(resp?.data[0]?.myTickets);
+    setIsRefresh(false);
   }
+
   function logoff() {
     dispatch({ type: dispatchState.isLogin, value: false });
     dispatch({ type: dispatchState.name, value: '' });
@@ -53,11 +47,11 @@ export default function MyTickets() {
           :
           <View style={styles.container}>
             <>
-            <View style={styles.row}>
-              <Text style={styles.txtTitle}>Meus Ingressos</Text>
-              <Text style={styles.txtTitle}>Possuí {events.length} ingresso</Text>
-            </View>
-              
+              <View style={styles.row}>
+                <Text style={styles.txtTitle}>Meus Ingressos</Text>
+                <Text style={styles.txtTitle}>Possuí {events.length} ingresso</Text>
+              </View>
+
               <FlatList
                 data={events}
                 refreshControl={<RefreshControl refreshing={isRefresh} onRefresh={() => getData()} colors={[colors.azul, colors.branco]} />}
@@ -65,7 +59,7 @@ export default function MyTickets() {
                 keyExtractor={item => String(item.id)}
                 ListFooterComponent={<FooterList load={isRefresh} />}
                 renderItem={({ item: item }) => (
-                  <CardEvent item={item} isMyTicket />
+                  <CardEvent item={item} isMyTicket onPress={() => navigation.navigate(Telas.detailsTicket, { isMyTicket: true, event: item })} />
                 )}
               />
             </>

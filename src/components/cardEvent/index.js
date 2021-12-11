@@ -7,7 +7,7 @@ import styles from './style';
 
 export default function CardEvent({ item, onPress, isMyTicket }) {
     return (
-        <TouchableOpacity style={styles.containerPedidos} onPress={isMyTicket ? null : onPress}>
+        <TouchableOpacity style={styles.containerPedidos} onPress={onPress}>
             <LinearGradient style={styles.containerCard} colors={[colors.branco, "rgba(5, 230, 250, 0.05)"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
                 <Text style={styles.txtOs}>{String(item.name).length > 35 ? String(item.name).substr(0,35) + '...' : item.name}</Text>
                 <Text style={styles.txtStandard}>{String(item.description).length > 35 ? String(item.description).substr(0, 35) + '...' : item.description}</Text>

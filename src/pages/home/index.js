@@ -53,7 +53,7 @@ export default function Home() {
           keyExtractor={item => String(item.id)}
           renderItem={({ item: item }) => (
             <CardEvent item={item}
-              onPress={() => navigation.navigate(Telas.detailsTicket, { event: item })}
+              onPress={() => navigation.navigate(Telas.detailsTicket, { isMyTicket: false, event: item })}
             />
           )}
         />

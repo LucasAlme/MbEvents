@@ -41,20 +41,12 @@ export default function Profile() {
 
 
   useEffect(() => {
-    console.log(user)
     getData();
   }, [])
 
-  function getData() {
-    api.get(`users?name=${name}`)
-      .then((resp) =>
-        setUser(resp.data[0])
-      )
-      .catch((err) => {
-        console.error("ops! ocorreu um erro " + err)
-        setIsRefresh(false)
-      })
-
+  async function getData() {
+    const resp = await api.get(`users?name=${name}`);
+    setUser(resp.data[0]);
   }
 
   function logoff() {
